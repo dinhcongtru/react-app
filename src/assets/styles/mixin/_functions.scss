@@ -1,0 +1,83 @@
+@use '../config/variables' as vari;
+
+@mixin clearfix {
+    &::after {
+        content: "";
+        display: block;
+        clear: both;
+    }
+}
+
+@mixin formclear {
+    border: none;
+    outline: none;
+    background: transparent;
+    background-image: none;
+    box-shadow: none;
+    -webkit-appearance: none;
+    appearance: none;
+    border-radius: 0;
+}
+
+@mixin bgsetup($bgimage: '', $bgrepeat: '', $bgposi: '', $bgsize: '') {
+    @if $bgimage !='' {
+        background-image: url($bgimage);
+    }
+
+    @if $bgrepeat !='' {
+        background-repeat: $bgrepeat;
+    }
+
+    @if $bgposi !='' {
+        background-position: $bgposi;
+    }
+
+    @if $bgsize !='' {
+        background-size: $bgsize;
+    }
+}
+
+@mixin pc {
+
+    //pc
+    @media (max-width: vari.$breakpoint-pc) and (min-width: vari.$breakpoint-min-pc) {
+        @content;
+    }
+}
+
+@mixin sp {
+
+    //sp
+    @media (max-width: (vari.$breakpoint-md)) {
+        @content;
+    }
+}
+
+
+@function get_pc($fsize, $viewport: 1600) {
+    $rate: calc(100 / $viewport);
+    @return $rate * $fsize * 1vw;
+}
+
+@function get_sp($fsize, $viewport: 375) {
+    $rate: calc(100 / $viewport);
+    @return $rate * $fsize * 1vw;
+}
+
+/* text clamp */
+@mixin txtClamp($clamp: "") {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: $clamp;
+}
+
+/* anime In order */
+@mixin animeInorder($limit, $sec, $ease-cubic, $delay) {
+    @for$i from 1 through $limit {
+        &:nth-child(#{$i}) {
+            -webkit-animation: slideIn $sec $ease-cubic #{$delay+$i*0.1} forwards;
+            animation: slideIn $sec $ease-cubic #{$delay+$i*0.1} forwards;
+        }
+    }
+}

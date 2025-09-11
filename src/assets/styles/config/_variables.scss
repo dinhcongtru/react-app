@@ -1,0 +1,44 @@
+$base-font-family: "Zen Maru Gothic", sans-serif;
+$font-noto-sans: "Noto Sans JP", sans-serif;
+$breakpoint-pc: 1600px;
+$breakpoint-min-pc: 960px;
+$breakpoint-md: 959px;
+
+// Main colors
+$color-primary: #097cf2;
+$color-white: #ffffff;
+$color-txt: #333;
+$color-bg: #ffffff;
+
+// Legacy colors (keep for backward compatibility)
+$clr-base: #ffffff;
+$clr-txt-white: #ffffff;
+$clr-txt-black: #000000;
+$clr-text: #8e8057;
+$clr-txt-red: #fd666e;
+$clr-link: #32ccc7;
+$clr-dark-blue: #1e3a8a;
+$clr-heading: #097cf2;
+$clr-selection: #b3d4fc;
+$clr-tel: #a4002c;
+$clr-footer: #f8f8f8;
+$cl-text: #333;
+$cl-white: #fff;
+$cl-dark-white: #e8e8e8;
+$cl-blue: #46a2e9;
+$cl-light-blue: #6482d2;
+$cl-dark-blue: #0b3182;
+$cl-bright-blue: #6fbdc0;
+$cl-slate-blue: #86a1b6;
+$cl-pink: #f88b9c;
+$cl-light-pink: #ea7666;
+$cl-light-yellow: #fcce5c;
+$cl-orange: #ec6b00;
+$cl-border: #ccc;
+$cl-border-gray: #ddd;
+$bg-table-th: #f9fbfc;
+
+$ease-inout: ease-in-out;
+$ease-liner: linear;
+$ease-cubic: cubic-bezier(0.215, 0.61, 0.355, 1);
+$ease-cubic-out: cubic-bezier(0.915, 0.03, 0.91, 0.35);

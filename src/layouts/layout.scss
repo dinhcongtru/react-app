@@ -1,0 +1,249 @@
+/*
+  Layout SCSS - Dynamic Layout System
+*/
+
+// Document variations
+.l-document {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  &--default {
+    background-color: $color-bg;
+  }
+
+  &--minimal {
+    .l-header {
+      padding: 10px 0;
+      border-bottom: 1px solid #eee;
+    }
+  }
+
+  &--full-width {
+    .l-container {
+      max-width: none;
+      padding: 0;
+    }
+  }
+
+  &--sidebar {
+    position: relative;
+  }
+}
+
+// Header styles
+.l-header {
+  background-color: $color-white;
+  border-bottom: 1px solid #e5e5e5;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  padding: 15px 0;
+
+  &--minimal {
+    padding: 8px 0;
+
+    .nav-menu {
+      display: none;
+    }
+  }
+}
+
+.nav-global {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-brand {
+  &__link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: inherit;
+    text-decoration: none;
+  }
+
+  &__logo {
+    width: 32px;
+    height: 32px;
+  }
+
+  &__text {
+    font-weight: 600;
+    font-size: 18px;
+  }
+}
+
+.nav-menu {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 30px;
+
+  @include sp {
+    display: none;
+  }
+
+  &__link {
+    color: $color-txt;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+    position: relative;
+
+    &:hover {
+      color: $color-primary;
+    }
+
+    &--active {
+      color: $color-primary;
+
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: -20px;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background-color: $color-primary;
+      }
+    }
+  }
+}
+
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+  padding: 8px;
+  background: none;
+  border: none;
+  cursor: pointer;
+
+  @include sp {
+    display: flex;
+  }
+
+  &__line {
+    width: 20px;
+    height: 2px;
+    background-color: $color-txt;
+    transition: all 0.3s ease;
+  }
+}
+
+// Main content
+.l-main {
+  flex: 1;
+  padding: 40px 0;
+
+  &--full-width {
+    padding: 0;
+  }
+}
+
+.l-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+// Footer styles
+.l-footer {
+  background-color: #f8f9fa;
+  border-top: 1px solid #e5e5e5;
+  padding: 40px 0 20px;
+  margin-top: auto;
+
+  &--minimal {
+    padding: 15px 0;
+    text-align: center;
+
+    .footer-minimal__text {
+      margin: 0;
+      color: #666;
+      font-size: 14px;
+    }
+  }
+}
+
+.footer-content {
+  &__main {
+    display: flex;
+    gap: 60px;
+    margin-bottom: 30px;
+
+    @include sp {
+      flex-direction: column;
+      gap: 30px;
+    }
+  }
+
+  &__bottom {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid #e5e5e5;
+  }
+}
+
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+
+  img {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+.footer-nav {
+  display: flex;
+  gap: 60px;
+
+  @include sp {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  &__section {
+    flex: 1;
+  }
+
+  &__title {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: $color-txt;
+  }
+
+  &__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+      margin-bottom: 8px;
+    }
+
+    a {
+      color: #666;
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.3s ease;
+
+      &:hover {
+        color: $color-primary;
+      }
+    }
+  }
+}
+
+.footer-copyright {
+  margin: 0;
+  color: #666;
+  font-size: 14px;
+}

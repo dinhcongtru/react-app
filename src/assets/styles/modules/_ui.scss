@@ -1,0 +1,22 @@
+/*
+    button
+*/
+a {
+    cursor: pointer;
+    color: #06c;
+
+    &:hover {
+        color: #39f;
+    }
+
+    &:focus {
+        outline: none;
+    }
+}
+
+input,
+button,
+textarea {
+    outline: none;
+    border: none;
+}
