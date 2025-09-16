@@ -19,3 +19,21 @@ export const useFetchProduct = () => {
   }, [])
   return { products, loading }
 }
+
+export const useFetchProductById = (id: string) => {
+  const [product, setProduct] = useState<Product | null>(null)
+  const [loading, setLoading] = useState(true)
+  useEffect(() => {
+    ;(async () => {
+      try {
+        const res = await productApi.getProductById(id)
+        setProduct(res as Product)
+      } catch (error) {
+        console.log('Error fetching product:', error)
+      } finally {
+        setLoading(false)
+      }
+    })()
+  }, [id])
+  return { product, loading }
+}

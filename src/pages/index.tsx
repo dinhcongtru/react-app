@@ -1,7 +1,8 @@
 import React from 'react'
 import { useCounterDispatch, useCounterSelector } from '@/hooks/useCounter'
 import { decrement, increment, setAmount } from '@/store/modules/counter/counter'
-import { useFetchProduct } from '@/hooks/useFetchProduct'
+import { useFetchProduct, useFetchProductById } from '@/hooks/useFetchProduct'
+import { useFetchUser, useFetchUserById } from '@/hooks/useFetchUser'
 import { useDebounce } from '@/hooks/useDebounce'
 import { images } from '@/utils/images'
 import './index.scss'
@@ -21,7 +22,14 @@ const HomePage: React.FC = () => {
   }, 500)
   // call apis
   const { products, loading } = useFetchProduct()
-  console.log(products, loading)
+  console.log('products', products, 'loading', loading)
+  const { product, loading: loadingProduct } = useFetchProductById('1')
+  console.log('product', product, 'loadingProduct', loadingProduct)
+  const { users, loading: loadingUsers } = useFetchUser()
+  console.log('users', users, 'loadingUsers', loadingUsers)
+  const { user, loading: loadingUser } = useFetchUserById('1')
+  console.log('user', user, 'loadingUser', loadingUser)
+
   return (
     <>
       <div className="wrp-container page-home">

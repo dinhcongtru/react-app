@@ -1,9 +1,12 @@
 export interface Product {
-  id: number
-  name: string
-  data?: {
-    color?: string
-    price?: string
-    generation?: string
+  id: string
+  title: string
+  price: string
+  description: string
+  category: string
+  image: string
+  rating: {
+    rate: string
+    count: string
   }
 }
