@@ -1,8 +1,8 @@
-@use "../config/variables" as vari;
+@use '../config/variables' as vari;
 
 @mixin clearfix {
   &::after {
-    content: "";
+    content: '';
     display: block;
     clear: both;
   }
@@ -19,20 +19,20 @@
   border-radius: 0;
 }
 
-@mixin bgsetup($bgimage: "", $bgrepeat: "", $bgposi: "", $bgsize: "") {
-  @if $bgimage != "" {
+@mixin bgsetup($bgimage: '', $bgrepeat: '', $bgposi: '', $bgsize: '') {
+  @if $bgimage != '' {
     background-image: url($bgimage);
   }
 
-  @if $bgrepeat != "" {
+  @if $bgrepeat != '' {
     background-repeat: $bgrepeat;
   }
 
-  @if $bgposi != "" {
+  @if $bgposi != '' {
     background-position: $bgposi;
   }
 
-  @if $bgsize != "" {
+  @if $bgsize != '' {
     background-size: $bgsize;
   }
 }
@@ -62,7 +62,7 @@
 }
 
 /* text clamp */
-@mixin txtClamp($clamp: "") {
+@mixin txtClamp($clamp: '') {
   overflow: hidden;
   display: -webkit-box;
   -webkit-box-orient: vertical;

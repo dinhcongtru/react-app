@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 const ServicesPage: React.FC = () => {
   // const { setLayoutType } = UseLayout()
@@ -6,7 +6,7 @@ const ServicesPage: React.FC = () => {
   React.useEffect(() => {
     // Set full-width layout for services page
     // setLayoutType('full-width')
-  }, [])
+  }, []);
 
   const services = [
     {
@@ -33,7 +33,7 @@ const ServicesPage: React.FC = () => {
       description: 'Scalable cloud infrastructure and deployment',
       features: ['AWS/Azure', 'Docker', 'CI/CD Pipeline', 'Monitoring'],
     },
-  ]
+  ];
 
   return (
     <>
@@ -82,7 +82,7 @@ const ServicesPage: React.FC = () => {
         </section>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default ServicesPage
+export default ServicesPage;

@@ -1,10 +1,10 @@
-import { createBrowserRouter } from 'react-router-dom'
-import App from '@/App'
-import HomePage from '@/pages'
-import AboutPage from '@/pages/about'
-import ServicesPage from '@/pages/service'
-import ContactPage from '@/pages/contact'
-import NotFoundPage from '@/pages/NotFoundPage'
+import { createBrowserRouter } from 'react-router-dom';
+import App from '@/App';
+import HomePage from '@/pages';
+import AboutPage from '@/pages/about';
+import ServicesPage from '@/pages/service';
+import ContactPage from '@/pages/contact';
+import NotFoundPage from '@/pages/NotFoundPage';
 export const router = createBrowserRouter([
   {
     path: '/',
@@ -54,6 +54,6 @@ export const router = createBrowserRouter([
       },
     ],
   },
-])
+]);
 
-export default router
+export default router;

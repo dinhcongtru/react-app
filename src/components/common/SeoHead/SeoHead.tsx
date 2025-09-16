@@ -1,18 +1,18 @@
-import { Helmet } from 'react-helmet-async'
-import { PAGE_SEO_CONFIG, generateBreadcrumbSchema, generateSeoData } from '@/utils/seo'
-import { type BreadcrumbItem, type SeoData } from '@/types/seo'
+import { Helmet } from 'react-helmet-async';
+import { PAGE_SEO_CONFIG, generateBreadcrumbSchema, generateSeoData } from '@/utils/seo';
+import { type BreadcrumbItem, type SeoData } from '@/types/seo';
 
 export interface SeoHeadProps {
-  breadcrumbs?: BreadcrumbItem[]
-  pageKey?: keyof typeof PAGE_SEO_CONFIG
-  customData?: BreadcrumbItem
+  breadcrumbs?: BreadcrumbItem[];
+  pageKey?: keyof typeof PAGE_SEO_CONFIG;
+  customData?: BreadcrumbItem;
 }
 
 export default function SeoHead({ ...seoData }: SeoHeadProps) {
-  const seo: SeoData = generateSeoData(seoData.pageKey, seoData.customData)
+  const seo: SeoData = generateSeoData(seoData.pageKey, seoData.customData);
   const breadcrumbSchema = seoData.breadcrumbs
     ? generateBreadcrumbSchema(seoData.breadcrumbs)
-    : null
+    : null;
 
   return (
     <Helmet>
@@ -35,5 +35,5 @@ export default function SeoHead({ ...seoData }: SeoHeadProps) {
         <script type="application/ld+json">{JSON.stringify(breadcrumbSchema)}</script>
       )}
     </Helmet>
-  )
+  );
 }

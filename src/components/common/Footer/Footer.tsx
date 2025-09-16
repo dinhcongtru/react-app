@@ -1,8 +1,8 @@
-import React from 'react'
-import { NavLink } from 'react-router-dom'
+import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 interface FooterProps {
-  className?: string
+  className?: string;
 }
 
 const Footer: React.FC<FooterProps> = ({ className = '' }) => {
@@ -57,7 +57,7 @@ const Footer: React.FC<FooterProps> = ({ className = '' }) => {
         </div>
       </div>
     </footer>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;

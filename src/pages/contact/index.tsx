@@ -1,9 +1,9 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 interface ContactForm {
-  name: string
-  email: string
-  subject: string
-  message: string
+  name: string;
+  email: string;
+  subject: string;
+  message: string;
 }
 
 const ContactPage: React.FC = () => {
@@ -12,21 +12,21 @@ const ContactPage: React.FC = () => {
     email: '',
     subject: '',
     message: '',
-  })
+  });
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target
-    setForm(prev => ({ ...prev, [name]: value }))
-  }
+    const { name, value } = e.target;
+    setForm(prev => ({ ...prev, [name]: value }));
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
+    e.preventDefault();
     // Handle form submission here
-    console.log('Form submitted:', form)
-    alert('Cảm ơn bạn đã liên hệ! Chúng tôi sẽ phản hồi sớm nhất có thể.')
+    console.log('Form submitted:', form);
+    alert('Cảm ơn bạn đã liên hệ! Chúng tôi sẽ phản hồi sớm nhất có thể.');
     // Reset form
-    setForm({ name: '', email: '', subject: '', message: '' })
-  }
+    setForm({ name: '', email: '', subject: '', message: '' });
+  };
 
   return (
     <>
@@ -143,7 +143,7 @@ const ContactPage: React.FC = () => {
         </section>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default ContactPage
+export default ContactPage;

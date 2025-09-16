@@ -1,39 +1,41 @@
-import { useEffect, useState } from 'react'
-import { userApi } from '@services/apis/user'
-import type { User } from '@services/types/user'
+import { useEffect, useState } from 'react';
+import { userApi } from '@services/apis/user';
+import type { User } from '@services/types/user';
 
 export const useFetchUser = () => {
-  const [users, setUsers] = useState<User[]>([])
-  const [loading, setLoading] = useState(true)
+  const [users, setUsers] = useState<User[]>([]);
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
-    ;(async () => {
+    const fetchUsers = async () => {
       try {
-        const res = await userApi.getUsers()
-        setUsers(res as User[])
+        const res = await userApi.getUsers();
+        setUsers(res as User[]);
       } catch (error) {
-        console.log('Error fetching users:', error)
+        console.log('Error fetching users:', error);
       } finally {
-        setLoading(false)
+        setLoading(false);
       }
-    })()
-  }, [])
-  return { users, loading }
-}
+    };
+
+    fetchUsers();
+  }, []);
+  return { users, loading };
+};
 
 export const useFetchUserById = (id: string) => {
-  const [user, setUser] = useState<User | null>(null)
-  const [loading, setLoading] = useState(true)
+  const [user, setUser] = useState<User | null>(null);
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
-    ;(async () => {
+    (async () => {
       try {
-        const res = await userApi.getUserById(id)
-        setUser(res as User)
+        const res = await userApi.getUserById(id);
+        setUser(res as User);
       } catch (error) {
-        console.log('Error fetching user:', error)
+        console.log('Error fetching user:', error);
       } finally {
-        setLoading(false)
+        setLoading(false);
       }
-    })()
-  }, [id])
-  return { user, loading }
-}
+    })();
+  }, [id]);
+  return { user, loading };
+};

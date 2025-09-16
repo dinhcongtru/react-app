@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 const AboutPage: React.FC = () => {
   return (
@@ -65,7 +65,7 @@ const AboutPage: React.FC = () => {
         </section>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default AboutPage
+export default AboutPage;

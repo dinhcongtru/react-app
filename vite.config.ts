@@ -1,11 +1,11 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-import { URL, fileURLToPath } from 'node:url'
-import viteImagemin from 'vite-plugin-imagemin'
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+import { URL, fileURLToPath } from 'node:url';
+import viteImagemin from 'vite-plugin-imagemin';
 
 function getPackageName(id: string) {
-  const parts = id.split('node_modules/')[1].split('/')
-  return parts[0].startsWith('@') ? `${parts[0]}/${parts[1]}` : parts[0]
+  const parts = id.split('node_modules/')[1].split('/');
+  return parts[0].startsWith('@') ? `${parts[0]}/${parts[1]}` : parts[0];
 }
 // https://vite.dev/config/
 export default defineConfig({
@@ -70,13 +70,13 @@ export default defineConfig({
       output: {
         assetFileNames: assetInfo => {
           if (/\.(png|jpe?g|svg|gif)$/.test(assetInfo.name ?? '')) {
-            return 'assets/images/[name]-[hash][extname]'
+            return 'assets/images/[name]-[hash][extname]';
           }
-          return 'assets/[name]-[hash][extname]'
+          return 'assets/[name]-[hash][extname]';
         },
         manualChunks(id) {
           if (id.includes('node_modules')) {
-            const pkgName = getPackageName(id)
+            const pkgName = getPackageName(id);
             // Ensure React ecosystem stays together to avoid duplicate instances
             if (
               [
@@ -88,14 +88,14 @@ export default defineConfig({
                 'use-sync-external-store',
               ].includes(pkgName)
             ) {
-              return 'react-core'
+              return 'react-core';
             }
-            if (['react-router-dom', 'react-router'].includes(pkgName)) return 'router'
-            return 'vendors'
+            if (['react-router-dom', 'react-router'].includes(pkgName)) return 'router';
+            return 'vendors';
           }
-          return undefined
+          return undefined;
         },
       },
     },
   },
-})
+});

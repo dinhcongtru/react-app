@@ -1,8 +1,8 @@
-import React from 'react'
-import { NavLink } from 'react-router-dom'
+import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 interface HeaderProps {
-  className?: string
+  className?: string;
 }
 
 const Header: React.FC<HeaderProps> = ({ className = '' }) => {
@@ -61,7 +61,7 @@ const Header: React.FC<HeaderProps> = ({ className = '' }) => {
         </nav>
       </div>
     </header>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;

@@ -1,7 +1,7 @@
-import React from 'react'
-import { NavLink } from 'react-router-dom'
-import SeoHead from '@components/common/SeoHead/SeoHead'
-import './NotFoundPage.scss'
+import React from 'react';
+import { NavLink } from 'react-router-dom';
+import SeoHead from '@components/common/SeoHead/SeoHead';
+import './NotFoundPage.scss';
 
 const NotFoundPage: React.FC = () => {
   return (
@@ -34,7 +34,7 @@ const NotFoundPage: React.FC = () => {
         </div>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default NotFoundPage
+export default NotFoundPage;

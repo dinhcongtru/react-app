@@ -1,4 +1,4 @@
-import type { PageSeoConfig, SeoData } from '@/types/seo'
+import type { PageSeoConfig, SeoData } from '@/types/seo';
 
 // Default SEO configuration
 export const DEFAULT_SEO: SeoData = {
@@ -13,7 +13,7 @@ export const DEFAULT_SEO: SeoData = {
   locale: 'vi_VN',
   author: 'React App Team',
   twitterCard: 'summary_large_image',
-}
+};
 
 // Page-specific SEO configurations
 export const PAGE_SEO_CONFIG: Record<string, PageSeoConfig> = {
@@ -59,21 +59,21 @@ export const PAGE_SEO_CONFIG: Record<string, PageSeoConfig> = {
     noindex: true,
     nofollow: true,
   },
-}
+};
 
 // Generate complete SEO data by merging default with page-specific
 export const generateSeoData = (
   pageKey?: keyof typeof PAGE_SEO_CONFIG,
   customData?: Partial<SeoData>
 ): SeoData => {
-  const pageConfig = pageKey ? PAGE_SEO_CONFIG[pageKey] : {}
+  const pageConfig = pageKey ? PAGE_SEO_CONFIG[pageKey] : {};
 
   return {
     ...DEFAULT_SEO,
     ...pageConfig,
     ...customData,
-  }
-}
+  };
+};
 
 // Generate structured data for breadcrumbs
 export const generateBreadcrumbSchema = (breadcrumbs: { name: string; url: string }[]) => {
@@ -86,8 +86,8 @@ export const generateBreadcrumbSchema = (breadcrumbs: { name: string; url: strin
       name: item.name,
       item: `${DEFAULT_SEO.url}${item.url}`,
     })),
-  }
-}
+  };
+};
 
 // Generate organization schema
 export const generateOrganizationSchema = () => {
@@ -102,8 +102,8 @@ export const generateOrganizationSchema = () => {
       'https://twitter.com/your-handle',
       'https://linkedin.com/company/your-company',
     ],
-  }
-}
+  };
+};
 
 // Generate website schema
 export const generateWebsiteSchema = () => {
@@ -117,5 +117,5 @@ export const generateWebsiteSchema = () => {
       target: `${DEFAULT_SEO.url}/search?q={search_term_string}`,
       'query-input': 'required name=search_term_string',
     },
-  }
-}
+  };
+};

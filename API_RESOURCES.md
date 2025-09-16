@@ -214,7 +214,7 @@ GET    /carts/user/1             # User's carts
 
 ```typescript
 // src/services/apis/fakestore.ts
-const BASE_URL = 'https://fakestoreapi.com'
+const BASE_URL = 'https://fakestoreapi.com';
 
 export const productAPI = {
   getAll: () => fetch(`${BASE_URL}/products`).then(res => res.json()),
@@ -222,12 +222,12 @@ export const productAPI = {
   getCategories: () => fetch(`${BASE_URL}/products/categories`).then(res => res.json()),
   getByCategory: (category: string) =>
     fetch(`${BASE_URL}/products/category/${category}`).then(res => res.json()),
-}
+};
 
 export const userAPI = {
   getAll: () => fetch(`${BASE_URL}/users`).then(res => res.json()),
   getById: (id: number) => fetch(`${BASE_URL}/users/${id}`).then(res => res.json()),
-}
+};
 ```
 
 ### Quick Test in Browser:
@@ -236,7 +236,7 @@ export const userAPI = {
 // Test any API instantly
 fetch('https://fakestoreapi.com/products')
   .then(res => res.json())
-  .then(data => console.log(data))
+  .then(data => console.log(data));
 ```
 
 ## 📊 **Best APIs by Use Case**
@@ -280,13 +280,13 @@ fetch('https://fakestoreapi.com/products')
 ### Simple Product List Component:
 
 ```typescript
-const [products, setProducts] = useState([])
+const [products, setProducts] = useState([]);
 
 useEffect(() => {
   fetch('https://fakestoreapi.com/products')
     .then(res => res.json())
-    .then(data => setProducts(data))
-}, [])
+    .then(data => setProducts(data));
+}, []);
 ```
 
 ### User Authentication Flow:
@@ -297,9 +297,9 @@ const login = async (email: string, password: string) => {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ email, password }),
-  })
-  return response.json()
-}
+  });
+  return response.json();
+};
 ```
 
 **Start với Fake Store API - perfect cho e-commerce projects! 🛒**
