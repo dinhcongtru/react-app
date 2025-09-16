@@ -7,12 +7,24 @@ import { store } from '@store/index'
 import { HelmetProvider } from 'react-helmet-async'
 
 const root = createRoot(document.getElementById('root')!)
+
+// Only enable StrictMode in development
+const isDevelopment = import.meta.env.VITE_NODE_ENV === 'development'
+
+export const App = () => (
+  <Provider store={store}>
+    <HelmetProvider>
+      <RouterProvider router={router} />
+    </HelmetProvider>
+  </Provider>
+)
+
 root.render(
-  <StrictMode>
-    <Provider store={store}>
-      <HelmetProvider>
-        <RouterProvider router={router} />
-      </HelmetProvider>
-    </Provider>
-  </StrictMode>
+  isDevelopment ? (
+    <StrictMode>
+      <App />
+    </StrictMode>
+  ) : (
+    <App />
+  )
 )
