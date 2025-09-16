@@ -13,26 +13,26 @@ const ServicesPage: React.FC = () => {
       icon: '🚀',
       title: 'Web Development',
       description: 'Modern, responsive websites using latest technologies',
-      features: ['React & Vue.js', 'Node.js Backend', 'Database Design', 'API Integration']
+      features: ['React & Vue.js', 'Node.js Backend', 'Database Design', 'API Integration'],
     },
     {
       icon: '📱',
       title: 'Mobile Apps',
       description: 'Native and cross-platform mobile applications',
-      features: ['React Native', 'iOS & Android', 'App Store Deploy', 'Push Notifications']
+      features: ['React Native', 'iOS & Android', 'App Store Deploy', 'Push Notifications'],
     },
     {
       icon: '🎨',
       title: 'UI/UX Design',
       description: 'Beautiful and intuitive user interface design',
-      features: ['Figma Design', 'Prototyping', 'User Research', 'Accessibility']
+      features: ['Figma Design', 'Prototyping', 'User Research', 'Accessibility'],
     },
     {
       icon: '☁️',
       title: 'Cloud Services',
       description: 'Scalable cloud infrastructure and deployment',
-      features: ['AWS/Azure', 'Docker', 'CI/CD Pipeline', 'Monitoring']
-    }
+      features: ['AWS/Azure', 'Docker', 'CI/CD Pipeline', 'Monitoring'],
+    },
   ]
 
   return (
@@ -41,9 +41,7 @@ const ServicesPage: React.FC = () => {
         <section className="services-hero">
           <div className="wrp-container">
             <h1 className="services-title">Our Services</h1>
-            <p className="services-subtitle">
-              Comprehensive solutions for your digital needs
-            </p>
+            <p className="services-subtitle">Comprehensive solutions for your digital needs</p>
           </div>
         </section>
 

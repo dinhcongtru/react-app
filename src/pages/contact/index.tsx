@@ -11,7 +11,7 @@ const ContactPage: React.FC = () => {
     name: '',
     email: '',
     subject: '',
-    message: ''
+    message: '',
   })
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -33,9 +33,7 @@ const ContactPage: React.FC = () => {
       <div className="wrp-container page-contact">
         <section className="contact-hero">
           <h1 className="contact-title">Contact Us</h1>
-          <p className="contact-subtitle">
-            Contact us to discuss your project
-          </p>
+          <p className="contact-subtitle">Contact us to discuss your project</p>
         </section>
 
         <section className="contact-content">
@@ -51,7 +49,7 @@ const ContactPage: React.FC = () => {
                     <p>support@reactapp.com</p>
                   </div>
                 </div>
-                
+
                 <div className="contact-method">
                   <div className="method-icon">📞</div>
                   <div className="method-content">
@@ -60,7 +58,7 @@ const ContactPage: React.FC = () => {
                     <p>+84 987 654 321</p>
                   </div>
                 </div>
-                
+
                 <div className="contact-method">
                   <div className="method-icon">📍</div>
                   <div className="method-content">
@@ -69,7 +67,7 @@ const ContactPage: React.FC = () => {
                     <p>Ho Chi Minh City, Vietnam</p>
                   </div>
                 </div>
-                
+
                 <div className="contact-method">
                   <div className="method-icon">🕐</div>
                   <div className="method-content">

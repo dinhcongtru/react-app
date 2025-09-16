@@ -12,21 +12,15 @@ const Header: React.FC<HeaderProps> = ({ className = '' }) => {
         <nav className="nav-global">
           <div className="nav-brand">
             <NavLink to="/" className="nav-brand__link">
-              <img 
-                src="/vite.svg" 
-                alt="Logo" 
-                className="nav-brand__logo"
-                width="32" 
-                height="32"
-              />
+              <img src="/vite.svg" alt="Logo" className="nav-brand__logo" width="32" height="32" />
               <span className="nav-brand__text">React App</span>
             </NavLink>
           </div>
           <ul className="nav-menu">
             <li className="nav-menu__item">
-              <NavLink 
-                to="/" 
-                className={({ isActive }) => 
+              <NavLink
+                to="/"
+                className={({ isActive }) =>
                   `nav-menu__link ${isActive ? 'nav-menu__link--active' : ''}`
                 }
               >
@@ -34,9 +28,9 @@ const Header: React.FC<HeaderProps> = ({ className = '' }) => {
               </NavLink>
             </li>
             <li className="nav-menu__item">
-              <NavLink 
-                to="/about" 
-                className={({ isActive }) => 
+              <NavLink
+                to="/about"
+                className={({ isActive }) =>
                   `nav-menu__link ${isActive ? 'nav-menu__link--active' : ''}`
                 }
               >
@@ -44,9 +38,9 @@ const Header: React.FC<HeaderProps> = ({ className = '' }) => {
               </NavLink>
             </li>
             <li className="nav-menu__item">
-              <NavLink 
-                to="/services" 
-                className={({ isActive }) => 
+              <NavLink
+                to="/services"
+                className={({ isActive }) =>
                   `nav-menu__link ${isActive ? 'nav-menu__link--active' : ''}`
                 }
               >
@@ -54,9 +48,9 @@ const Header: React.FC<HeaderProps> = ({ className = '' }) => {
               </NavLink>
             </li>
             <li className="nav-menu__item">
-              <NavLink 
-                to="/contact" 
-                className={({ isActive }) => 
+              <NavLink
+                to="/contact"
+                className={({ isActive }) =>
                   `nav-menu__link ${isActive ? 'nav-menu__link--active' : ''}`
                 }
               >

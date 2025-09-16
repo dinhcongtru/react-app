@@ -1,15 +1,12 @@
 import React from 'react'
 
 const AboutPage: React.FC = () => {
-
   return (
     <>
       <div className="wrp-container page-about">
         <section className="page-hero">
           <h1 className="page-title">About Us</h1>
-          <p className="page-subtitle">
-            Learn about our company and development team
-          </p>
+          <p className="page-subtitle">Learn about our company and development team</p>
         </section>
 
         <section className="content-section">
@@ -17,22 +14,21 @@ const AboutPage: React.FC = () => {
             <div className="content-block">
               <h2>Our Story</h2>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod 
-                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
-                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
+                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
               </p>
               <p>
-                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore 
-                eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.
+                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+                fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.
               </p>
             </div>
-            
+
             <div className="content-block">
               <h2>Our Mission</h2>
               <p>
-                Sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut 
-                perspiciatis unde omnis iste natus error sit voluptatem accusantium 
-                doloremque laudantium.
+                Sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis
+                unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.
               </p>
               <ul className="feature-list">
                 <li>✅ Innovation & Quality</li>

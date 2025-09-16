@@ -1,4 +1,4 @@
-import { createSlice, type PayloadAction } from '@reduxjs/toolkit'
+import { type PayloadAction, createSlice } from '@reduxjs/toolkit'
 import type { RootState } from '@store/index'
 
 const initialValue = Number(localStorage.getItem('counter') || 0)
@@ -6,10 +6,10 @@ const initialValue = Number(localStorage.getItem('counter') || 0)
 export const counterSlice = createSlice({
   name: 'counter',
   initialState: {
-    value: initialValue
+    value: initialValue,
   },
   reducers: {
-    increment: (state) => {
+    increment: state => {
       if (state.value === 20) return
       state.value += 1
     },
@@ -22,8 +22,8 @@ export const counterSlice = createSlice({
     },
     setAmount: (state, action: PayloadAction<number>) => {
       state.value = action.payload
-    }
-  }
+    },
+  },
 })
 
 export const { increment, decrement, incrementByAmount, setAmount } = counterSlice.actions

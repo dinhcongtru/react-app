@@ -1,0 +1,18 @@
+# Dependencies
+node_modules/
+
+# Build outputs
+dist/
+build/
+.next/
+.nuxt/
+
+# Vendor CSS
+vendor/
+vendors/
+
+# Generated CSS
+*.min.css
+
+# Coverage
+coverage/

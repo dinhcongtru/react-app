@@ -4,7 +4,7 @@ import counterReducer from '@/store/modules/counter/counter'
 export const store = configureStore({
   reducer: {
     counter: counterReducer,
-  }
+  },
 })
 
 store.subscribe(() => {

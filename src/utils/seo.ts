@@ -1,9 +1,10 @@
-import type { SeoData, PageSeoConfig } from '@/types/seo'
+import type { PageSeoConfig, SeoData } from '@/types/seo'
 
 // Default SEO configuration
 export const DEFAULT_SEO: SeoData = {
   title: 'React App - Modern Web Development',
-  description: 'Professional React application with modern web development practices, dynamic layouts, and responsive design.',
+  description:
+    'Professional React application with modern web development practices, dynamic layouts, and responsive design.',
   keywords: 'React, TypeScript, SCSS, Web Development, Responsive Design, Modern UI',
   image: '/assets/images/common/ogp.jpg',
   url: 'https://your-domain.com',
@@ -11,62 +12,66 @@ export const DEFAULT_SEO: SeoData = {
   siteName: 'React App',
   locale: 'vi_VN',
   author: 'React App Team',
-  twitterCard: 'summary_large_image'
+  twitterCard: 'summary_large_image',
 }
 
 // Page-specific SEO configurations
 export const PAGE_SEO_CONFIG: Record<string, PageSeoConfig> = {
   home: {
     title: 'Home - React App',
-    description: 'Welcome to React App - Experience our dynamic layout system and modern web development approach.',
+    description:
+      'Welcome to React App - Experience our dynamic layout system and modern web development approach.',
     keywords: 'React App, Home, Dynamic Layout, Web Development',
-    breadcrumbs: [
-      { name: 'Home', url: '/' }
-    ]
+    breadcrumbs: [{ name: 'Home', url: '/' }],
   },
   about: {
     title: 'About Us - React App',
-    description: 'Learn about our company, team, and mission. Discover how we create innovative web solutions.',
+    description:
+      'Learn about our company, team, and mission. Discover how we create innovative web solutions.',
     keywords: 'About Us, Company, Team, Mission, Web Development',
     breadcrumbs: [
       { name: 'Home', url: '/' },
-      { name: 'About', url: '/about' }
-    ]
+      { name: 'About', url: '/about' },
+    ],
   },
   services: {
     title: 'Our Services - React App',
-    description: 'Comprehensive web development services including React applications, mobile apps, UI/UX design, and cloud solutions.',
+    description:
+      'Comprehensive web development services including React applications, mobile apps, UI/UX design, and cloud solutions.',
     keywords: 'Services, Web Development, React, Mobile Apps, UI/UX Design, Cloud Services',
     breadcrumbs: [
       { name: 'Home', url: '/' },
-      { name: 'Services', url: '/services' }
-    ]
+      { name: 'Services', url: '/services' },
+    ],
   },
   contact: {
     title: 'Contact Us - React App',
-    description: 'Get in touch with our team. We\'re here to help with your web development needs.',
+    description: "Get in touch with our team. We're here to help with your web development needs.",
     keywords: 'Contact, Get in Touch, Web Development, Support',
     breadcrumbs: [
       { name: 'Home', url: '/' },
-      { name: 'Contact', url: '/contact' }
-    ]
+      { name: 'Contact', url: '/contact' },
+    ],
   },
-  404: {
-    title: "Page Not Found - React App",
-    description: "Trang bạn đang tìm kiếm không tồn tại hoặc đã bị di chuyển.",
+  notFound: {
+    title: 'Page Not Found - React App',
+    description: 'Trang bạn đang tìm kiếm không tồn tại hoặc đã bị di chuyển.',
     noindex: true,
-    nofollow: true
-  }
+    nofollow: true,
+  },
 }
 
 // Generate complete SEO data by merging default with page-specific
-export const generateSeoData = (pageKey?: keyof typeof PAGE_SEO_CONFIG, customData?: Partial<SeoData>): SeoData => {
+export const generateSeoData = (
+  pageKey?: keyof typeof PAGE_SEO_CONFIG,
+  customData?: Partial<SeoData>
+): SeoData => {
   const pageConfig = pageKey ? PAGE_SEO_CONFIG[pageKey] : {}
-  
+
   return {
     ...DEFAULT_SEO,
     ...pageConfig,
-    ...customData
+    ...customData,
   }
 }
 
@@ -79,8 +84,8 @@ export const generateBreadcrumbSchema = (breadcrumbs: { name: string; url: strin
       '@type': 'ListItem',
       position: index + 1,
       name: item.name,
-      item: `${DEFAULT_SEO.url}${item.url}`
-    }))
+      item: `${DEFAULT_SEO.url}${item.url}`,
+    })),
   }
 }
 
@@ -95,8 +100,8 @@ export const generateOrganizationSchema = () => {
     sameAs: [
       'https://facebook.com/your-page',
       'https://twitter.com/your-handle',
-      'https://linkedin.com/company/your-company'
-    ]
+      'https://linkedin.com/company/your-company',
+    ],
   }
 }
 
@@ -110,7 +115,7 @@ export const generateWebsiteSchema = () => {
     potentialAction: {
       '@type': 'SearchAction',
       target: `${DEFAULT_SEO.url}/search?q={search_term_string}`,
-      'query-input': 'required name=search_term_string'
-    }
+      'query-input': 'required name=search_term_string',
+    },
   }
 }

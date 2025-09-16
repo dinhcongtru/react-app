@@ -1,4 +1,3 @@
-
 type ImageMap = Record<string, string>
 
 function buildImageMap(): ImageMap {

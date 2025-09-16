@@ -1,5 +1,6 @@
-import { PAGE_SEO_CONFIG, generateSeoData, generateBreadcrumbSchema } from "@/utils/seo"
-import { type SeoData, type BreadcrumbItem } from "@/types/seo"
+import { Helmet } from 'react-helmet-async'
+import { PAGE_SEO_CONFIG, generateBreadcrumbSchema, generateSeoData } from '@/utils/seo'
+import { type BreadcrumbItem, type SeoData } from '@/types/seo'
 
 export interface SeoHeadProps {
   breadcrumbs?: BreadcrumbItem[]
@@ -9,10 +10,12 @@ export interface SeoHeadProps {
 
 export default function SeoHead({ ...seoData }: SeoHeadProps) {
   const seo: SeoData = generateSeoData(seoData.pageKey, seoData.customData)
-  const breadcrumbSchema = seoData.breadcrumbs ? generateBreadcrumbSchema(seoData.breadcrumbs) : null
+  const breadcrumbSchema = seoData.breadcrumbs
+    ? generateBreadcrumbSchema(seoData.breadcrumbs)
+    : null
 
   return (
-    <>
+    <Helmet>
       <title>{seo.title}</title>
       <meta name="description" content={seo.description} />
       <meta name="keywords" content={seo.keywords} />
@@ -29,10 +32,8 @@ export default function SeoHead({ ...seoData }: SeoHeadProps) {
 
       {/* Breadcrumb Schema */}
       {breadcrumbSchema && breadcrumbSchema.itemListElement.length > 0 && (
-        <script type="application/ld+json">
-          {JSON.stringify(breadcrumbSchema)}
-        </script>
+        <script type="application/ld+json">{JSON.stringify(breadcrumbSchema)}</script>
       )}
-    </>
+    </Helmet>
   )
 }

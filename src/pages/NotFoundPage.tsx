@@ -1,15 +1,13 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import SeoHead from '@components/common/SeoHead/SeoHead'
+import './NotFoundPage.scss'
 
 const NotFoundPage: React.FC = () => {
-  
   return (
     <>
-      <SeoHead
-        pageKey='404'
-      />
-      
+      <SeoHead pageKey="notFound" />
+
       <div className="page-404">
         <div className="error-container">
           <div className="error-content">

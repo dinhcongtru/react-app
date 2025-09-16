@@ -1,19 +1,19 @@
-$base-font-family: "Zen Maru Gothic", sans-serif;
-$font-noto-sans: "Noto Sans JP", sans-serif;
+$base-font-family: 'Zen Maru Gothic', sans-serif;
+$font-noto-sans: 'Noto Sans JP', sans-serif;
 $breakpoint-pc: 1600px;
 $breakpoint-min-pc: 960px;
 $breakpoint-md: 959px;
 
 // Main colors
 $color-primary: #097cf2;
-$color-white: #ffffff;
+$color-white: #fff;
 $color-txt: #333;
-$color-bg: #ffffff;
+$color-bg: #fff;
 
 // Legacy colors (keep for backward compatibility)
-$clr-base: #ffffff;
-$clr-txt-white: #ffffff;
-$clr-txt-black: #000000;
+$clr-base: #fff;
+$clr-txt-white: #fff;
+$clr-txt-black: #000;
 $clr-text: #8e8057;
 $clr-txt-red: #fd666e;
 $clr-link: #32ccc7;
@@ -37,7 +37,6 @@ $cl-orange: #ec6b00;
 $cl-border: #ccc;
 $cl-border-gray: #ddd;
 $bg-table-th: #f9fbfc;
-
 $ease-inout: ease-in-out;
 $ease-liner: linear;
 $ease-cubic: cubic-bezier(0.215, 0.61, 0.355, 1);

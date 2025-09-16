@@ -1,6 +1,6 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
-import { fileURLToPath, URL } from 'node:url'
+import { URL, fileURLToPath } from 'node:url'
 import viteImagemin from 'vite-plugin-imagemin'
 
 function getPackageName(id: string) {
@@ -17,7 +17,7 @@ export default defineConfig({
       optipng: { optimizationLevel: 7 },
       mozjpeg: { quality: 75 },
       pngquant: { quality: [0.7, 0.9] },
-      svgo: { plugins: [{ name: 'removeViewBox' }] }
+      svgo: { plugins: [{ name: 'removeViewBox' }] },
     }),
   ],
   server: {
@@ -50,12 +50,12 @@ export default defineConfig({
   },
   build: {
     outDir: 'dist',
-    target: 'esnext',
+    target: 'es2015',
     minify: 'esbuild',
     sourcemap: false,
     rollupOptions: {
       output: {
-        assetFileNames: (assetInfo) => {
+        assetFileNames: assetInfo => {
           if (/\.(png|jpe?g|svg|gif)$/.test(assetInfo.name ?? '')) {
             return 'assets/images/[name]-[hash][extname]'
           }
@@ -64,11 +64,13 @@ export default defineConfig({
         manualChunks(id) {
           if (id.includes('node_modules')) {
             const pkgName = getPackageName(id)
-            if (['react-dom'].includes(pkgName)) return 'react-dom'
+            if (['react', 'react-dom'].includes(pkgName)) return 'react'
+            if (['react-router-dom'].includes(pkgName)) return 'router'
             return 'vendors'
           }
-        }
-      }
-    }
-  }
+          return undefined
+        },
+      },
+    },
+  },
 })
