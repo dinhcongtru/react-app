@@ -25,6 +25,17 @@ export default defineConfig({
     open: true,
     host: true,
   },
+  optimizeDeps: {
+    include: [
+      'react',
+      'react-dom',
+      'react-redux',
+      '@reduxjs/toolkit',
+      'react-helmet-async',
+      'use-sync-external-store',
+    ],
+    exclude: [],
+  },
   css: {
     preprocessorOptions: {
       scss: {
@@ -47,6 +58,8 @@ export default defineConfig({
       '@store': fileURLToPath(new URL('./src/store', import.meta.url)),
       '@services': fileURLToPath(new URL('./src/services', import.meta.url)),
     },
+    // Prevent duplicate React instances
+    dedupe: ['react', 'react-dom', 'react-redux', '@reduxjs/toolkit', 'use-sync-external-store'],
   },
   build: {
     outDir: 'dist',
@@ -64,8 +77,20 @@ export default defineConfig({
         manualChunks(id) {
           if (id.includes('node_modules')) {
             const pkgName = getPackageName(id)
-            if (['react', 'react-dom'].includes(pkgName)) return 'react'
-            if (['react-router-dom'].includes(pkgName)) return 'router'
+            // Ensure React ecosystem stays together to avoid duplicate instances
+            if (
+              [
+                'react',
+                'react-dom',
+                'react-redux',
+                '@reduxjs/toolkit',
+                'react-helmet-async',
+                'use-sync-external-store',
+              ].includes(pkgName)
+            ) {
+              return 'react-core'
+            }
+            if (['react-router-dom', 'react-router'].includes(pkgName)) return 'router'
             return 'vendors'
           }
           return undefined
