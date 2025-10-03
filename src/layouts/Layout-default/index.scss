@@ -1,0 +1,60 @@
+.l-document {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  &--default {
+    background-color: $color-bg;
+  }
+
+  &--minimal {
+    .l-header {
+      padding: 10px 0;
+      border-bottom: 1px solid $color-border-very-light;
+
+      @include pc {
+        padding: get_pc(10) 0;
+        border-bottom-width: get_pc(1);
+      }
+
+      @include sp {
+        padding: get_sp(10) 0;
+        border-bottom-width: get_sp(1);
+      }
+    }
+  }
+
+  &--full-width {
+    .l-container {
+      max-width: none;
+      padding: 0;
+    }
+  }
+
+  &--sidebar {
+    position: relative;
+  }
+}
+
+.l-main {
+  flex: 1;
+  padding: 40px 0;
+
+  @include pc {
+    padding: get_pc(40) 0;
+  }
+
+  @include sp {
+    padding: get_sp(40) 0;
+  }
+
+  &--full-width {
+    padding: 0;
+  }
+}
+
+.l-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './index.scss';
 interface ContactForm {
   name: string;
   email: string;

@@ -1,8 +1,7 @@
 import React from 'react';
+import './index.scss';
 
 const ServicesPage: React.FC = () => {
-  // const { setLayoutType } = UseLayout()
-
   React.useEffect(() => {
     // Set full-width layout for services page
     // setLayoutType('full-width')

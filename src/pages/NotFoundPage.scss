@@ -5,19 +5,33 @@
   align-items: center;
   justify-content: center;
   padding: 20px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
+  background: linear-gradient(135deg, $color-gradient-purple 0%, $color-gradient-purple-dark 100%);
+  color: $color-white;
+
+  @include pc {
+    padding: get_pc(20);
+  }
+
+  @include sp {
+    padding: get_sp(20);
+  }
 
   .error-container {
     display: flex;
     align-items: center;
-    gap: 3rem;
+    gap: 48px;
     max-width: 1200px;
     margin: 0 auto;
 
-    @media (width <= 768px) {
+    @include pc {
+      max-width: get_pc(1200);
+      gap: get_pc(48);
+    }
+
+    @include sp {
+      max-width: get_sp(1200);
       flex-direction: column;
-      gap: 2rem;
+      gap: get_sp(32);
       text-align: center;
     }
   }
@@ -26,49 +40,72 @@
     flex: 1;
 
     .error-code {
-      font-size: 8rem;
+      font-size: 128px;
       font-weight: 900;
       margin: 0;
-      text-shadow: 0 4px 8px rgb(0, 0, 0, 30%);
-      background: linear-gradient(45deg, #fff, #f0f0f0);
+      text-shadow: 0 4px 8px $color-shadow-very-dark;
+      background: linear-gradient(45deg, $color-white, $color-bg-very-light);
       background-clip: text;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       animation: glow 2s ease-in-out infinite alternate;
 
-      @media (width <= 768px) {
-        font-size: 5rem;
+      @include pc {
+        font-size: get_pc(128);
+        text-shadow: 0 get_pc(4) get_pc(8) $color-shadow-very-dark;
+      }
+
+      @include sp {
+        font-size: get_sp(80);
+        text-shadow: 0 get_sp(4) get_sp(8) $color-shadow-very-dark;
       }
     }
 
     .error-title {
-      font-size: 2.5rem;
-      margin: 1rem 0;
+      font-size: 40px;
+      margin: 16px 0;
       font-weight: 700;
 
-      @media (width <= 768px) {
-        font-size: 2rem;
+      @include pc {
+        font-size: get_pc(40);
+        margin: get_pc(16) 0;
+      }
+
+      @include sp {
+        font-size: get_sp(32);
+        margin: get_sp(16) 0;
       }
     }
 
     .error-message {
-      font-size: 1.2rem;
-      margin: 1.5rem 0 2rem;
+      font-size: 19px;
+      margin: 24px 0 32px;
       opacity: 0.9;
       line-height: 1.6;
 
-      @media (width <= 768px) {
-        font-size: 1rem;
+      @include pc {
+        font-size: get_pc(19);
+        margin: get_pc(24) 0 get_pc(32);
+      }
+
+      @include sp {
+        font-size: get_sp(16);
+        margin: get_sp(20) 0 get_sp(24);
       }
     }
 
     .error-actions {
       display: flex;
-      gap: 1rem;
+      gap: 16px;
 
-      @media (width <= 768px) {
+      @include pc {
+        gap: get_pc(16);
+      }
+
+      @include sp {
         flex-direction: column;
         align-items: center;
+        gap: get_sp(16);
       }
 
       .btn-primary,
@@ -80,33 +117,69 @@
         cursor: pointer;
         transition: all 0.3s ease;
         border: 2px solid transparent;
-        font-size: 1rem;
+        font-size: 16px;
         min-width: 140px;
+
+        @include pc {
+          padding: get_pc(12) get_pc(24);
+          border-radius: get_pc(8);
+          border-width: get_pc(2);
+          font-size: get_pc(16);
+          min-width: get_pc(140);
+        }
+
+        @include sp {
+          padding: get_sp(12) get_sp(24);
+          border-radius: get_sp(8);
+          border-width: get_sp(2);
+          font-size: get_sp(16);
+          min-width: get_sp(140);
+        }
 
         &:hover {
           transform: translateY(-2px);
-          box-shadow: 0 4px 15px rgb(0, 0, 0, 20%);
+          box-shadow: 0 4px 15px $color-shadow-dark;
         }
       }
 
       .btn-primary {
-        background: white;
-        color: #667eea;
+        background: $color-white;
+        color: $color-gradient-purple;
 
         &:hover {
-          background: #f8f9ff;
-          color: #5a6fd8;
+          background: $color-bg-blue-light;
+          color: $color-blue-dark;
         }
       }
 
       .btn-secondary {
         background: transparent;
-        color: white;
-        border-color: white;
+        color: $color-white;
+        border-color: $color-white;
 
         &:hover {
-          background: white;
-          color: #667eea;
+          background: $color-white;
+          color: $color-gradient-purple;
+        }
+      }
+    }
+
+    @include pc {
+      .btn-primary,
+      .btn-secondary {
+        &:hover {
+          transform: translateY(get_pc(-2));
+          box-shadow: 0 get_pc(4) get_pc(15) $color-shadow-dark;
+        }
+      }
+    }
+
+    @include sp {
+      .btn-primary,
+      .btn-secondary {
+        &:hover {
+          transform: translateY(get_sp(-2));
+          box-shadow: 0 get_sp(4) get_sp(15) $color-shadow-dark;
         }
       }
     }
@@ -122,12 +195,30 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      font-size: 4rem;
+      font-size: 64px;
       animation: float 3s ease-in-out infinite;
 
+      @include pc {
+        font-size: get_pc(64);
+      }
+
+      @include sp {
+        font-size: get_sp(48);
+      }
+
       span {
-        margin: 0.5rem 0;
-        filter: drop-shadow(0 4px 8px rgb(0, 0, 0, 20%));
+        margin: 8px 0;
+        filter: drop-shadow(0 4px 8px $color-shadow-dark);
+
+        @include pc {
+          margin: get_pc(8) 0;
+          filter: drop-shadow(0 get_pc(4) get_pc(8) $color-shadow-dark);
+        }
+
+        @include sp {
+          margin: get_sp(6) 0;
+          filter: drop-shadow(0 get_sp(4) get_sp(8) $color-shadow-dark);
+        }
       }
 
       span:first-child {
@@ -138,38 +229,5 @@
         animation: bounce 2s infinite 0.5s;
       }
     }
-  }
-}
-
-// Animations
-@keyframes glow {
-  from {
-    text-shadow: 0 0 20px rgb(255, 255, 255, 50%);
-  }
-
-  to {
-    text-shadow: 0 0 30px rgb(255, 255, 255, 80%);
-  }
-}
-
-@keyframes float {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-
-  50% {
-    transform: translateY(-10px);
-  }
-}
-
-@keyframes bounce {
-  0%,
-  100% {
-    transform: scale(1);
-  }
-
-  50% {
-    transform: scale(1.1);
   }
 }

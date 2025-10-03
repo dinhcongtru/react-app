@@ -1,0 +1,279 @@
+// Contact Page
+.page-contact {
+  padding: 40px 0;
+
+  @include pc {
+    padding: get_pc(40) 0;
+  }
+
+  @include sp {
+    padding: get_sp(40) 0;
+  }
+
+  .contact-hero {
+    text-align: center;
+    margin-bottom: 60px;
+
+    @include pc {
+      margin-bottom: get_pc(60);
+    }
+
+    @include sp {
+      margin-bottom: get_sp(60);
+    }
+
+    .contact-title {
+      font-size: 32px;
+      color: $color-primary;
+      margin-bottom: 20px;
+      animation: fadeInBottom 0.8s $ease-cubic;
+
+      @include pc {
+        font-size: get_pc(42);
+        margin-bottom: get_pc(20);
+      }
+
+      @include sp {
+        font-size: get_sp(32);
+      }
+    }
+
+    .contact-subtitle {
+      font-size: 16px;
+      color: $color-text-gray;
+      max-width: 600px;
+      margin: 0 auto;
+
+      @include pc {
+        font-size: get_pc(18);
+        max-width: get_pc(600);
+      }
+
+      @include sp {
+        font-size: get_sp(16);
+      }
+    }
+  }
+
+  .contact-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+
+    @include pc {
+      max-width: get_pc(1200);
+      padding: 0 get_pc(20);
+    }
+
+    @include sp {
+      padding: 0 get_sp(20);
+    }
+  }
+
+  .contact-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+
+    @include pc {
+      gap: get_pc(60);
+    }
+
+    @include sp {
+      grid-template-columns: 1fr;
+      gap: get_sp(40);
+    }
+  }
+
+  .contact-info h2 {
+    font-size: 28px;
+    color: $color-primary;
+    margin-bottom: 30px;
+
+    @include pc {
+      font-size: get_pc(28);
+      margin-bottom: get_pc(30);
+    }
+
+    @include sp {
+      font-size: get_sp(28);
+      margin-bottom: get_sp(30);
+    }
+  }
+
+  .contact-methods {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+
+    @include pc {
+      gap: get_pc(30);
+    }
+
+    @include sp {
+      gap: get_sp(30);
+    }
+  }
+
+  .contact-method {
+    display: flex;
+    gap: 20px;
+
+    @include pc {
+      gap: get_pc(20);
+    }
+
+    @include sp {
+      gap: get_sp(20);
+    }
+
+    .method-icon {
+      font-size: 24px;
+      flex-shrink: 0;
+
+      @include pc {
+        font-size: get_pc(24);
+      }
+
+      @include sp {
+        font-size: get_sp(24);
+      }
+    }
+
+    .method-content h3 {
+      font-size: 18px;
+      color: $color-primary;
+      margin-bottom: 10px;
+
+      @include sp {
+        font-size: get_sp(18);
+        margin-bottom: get_sp(10);
+      }
+    }
+
+    .method-content p {
+      color: $color-text-gray;
+      margin: 5px 0;
+
+      @include sp {
+        margin: get_sp(5) 0;
+      }
+    }
+  }
+
+  .contact-form-section h2 {
+    font-size: 28px;
+    color: $color-primary;
+    margin-bottom: 30px;
+
+    @include pc {
+      font-size: get_pc(28);
+      margin-bottom: get_pc(30);
+    }
+
+    @include sp {
+      font-size: get_sp(28);
+      margin-bottom: get_sp(30);
+    }
+  }
+
+  .contact-form {
+    .form-group {
+      margin-bottom: 25px;
+
+      @include pc {
+        margin-bottom: get_pc(25);
+      }
+
+      @include sp {
+        margin-bottom: get_sp(25);
+      }
+
+      label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 600;
+        color: $color-txt;
+
+        @include sp {
+          margin-bottom: get_sp(8);
+        }
+      }
+
+      input,
+      textarea {
+        width: 100%;
+        padding: 12px 15px;
+        font-size: 16px;
+        transition: border-color 0.3s ease;
+        @include formclear;
+
+        border: 2px solid $color-border-light;
+        border-radius: 5px;
+
+        @include pc {
+          padding: get_pc(12) get_pc(15);
+          font-size: get_pc(16);
+          border-width: get_pc(2);
+          border-radius: get_pc(5);
+        }
+
+        @include sp {
+          padding: get_sp(12) get_sp(15);
+          font-size: get_sp(16);
+          border-width: get_sp(2);
+          border-radius: get_sp(5);
+        }
+
+        &:focus {
+          border-color: $color-primary;
+        }
+
+        &::placeholder {
+          color: $color-text-placeholder;
+        }
+      }
+
+      textarea {
+        resize: vertical;
+        min-height: 120px;
+
+        @include pc {
+          min-height: get_pc(120);
+        }
+
+        @include sp {
+          min-height: get_sp(120);
+        }
+      }
+    }
+
+    .submit-btn {
+      background: $color-primary;
+      color: $color-white;
+      border: none;
+      padding: 15px 40px;
+      border-radius: 5px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.3s ease;
+
+      @include pc {
+        padding: get_pc(15) get_pc(40);
+        border-radius: get_pc(5);
+        font-size: get_pc(16);
+      }
+
+      @include sp {
+        padding: get_sp(15) get_sp(40);
+        border-radius: get_sp(5);
+        font-size: get_sp(16);
+      }
+
+      &:hover {
+        background: darken($color-primary, 10%);
+      }
+    }
+  }
+}

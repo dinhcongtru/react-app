@@ -1,12 +1,15 @@
+@use '../config/variables' as vari;
+@use '../mixin/index.scss' as mixin;
+
 /*
     button
 */
 a {
   cursor: pointer;
-  color: #06c;
+  color: vari.$color-primary;
 
   &:hover {
-    color: #39f;
+    color: vari.$color-gradient-blue;
   }
 
   &:focus {
@@ -19,4 +22,53 @@ button,
 textarea {
   outline: none;
   border: none;
+}
+
+.page-hero {
+  text-align: center;
+  margin-bottom: 60px;
+
+  @include mixin.pc {
+    margin-bottom: mixin.get_pc(60);
+  }
+
+  @include mixin.sp {
+    margin-bottom: mixin.get_sp(60);
+  }
+
+  .page-title {
+    font-size: 48px;
+    font-weight: 700;
+    color: vari.$color-primary;
+    margin-bottom: 20px;
+    animation: fadeInBottom 1s vari.$ease-cubic;
+
+    @include mixin.pc {
+      font-size: mixin.get_pc(48);
+      margin-bottom: mixin.get_pc(20);
+    }
+
+    @include mixin.sp {
+      font-size: mixin.get_sp(36);
+      margin-bottom: mixin.get_sp(20);
+    }
+  }
+
+  .page-subtitle {
+    font-size: 18px;
+    color: vari.$color-text-gray;
+    max-width: 600px;
+    margin: 0 auto;
+    animation: fadeInBottom 1s vari.$ease-cubic 0.3s both;
+
+    @include mixin.pc {
+      font-size: mixin.get_pc(18);
+      max-width: mixin.get_pc(600);
+    }
+
+    @include mixin.sp {
+      font-size: mixin.get_sp(16);
+      max-width: mixin.get_sp(600);
+    }
+  }
 }

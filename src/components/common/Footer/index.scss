@@ -1,0 +1,192 @@
+.l-footer {
+  background-color: $color-bg-light;
+  border-top: 1px solid $color-border-light;
+  padding: 40px 0 20px;
+  margin-top: auto;
+
+  @include pc {
+    padding: get_pc(40) 0 get_pc(20);
+    border-top-width: get_pc(1);
+  }
+
+  @include sp {
+    padding: get_sp(40) 0 get_sp(20);
+    border-top-width: get_sp(1);
+  }
+
+  &--minimal {
+    padding: 15px 0;
+    text-align: center;
+
+    @include pc {
+      padding: get_pc(15) 0;
+    }
+    @include sp {
+      padding: get_sp(15) 0;
+    }
+
+    .footer-minimal__text {
+      margin: 0;
+      color: $color-text-gray;
+      font-size: 14px;
+
+      @include pc {
+        font-size: get_pc(14);
+      }
+      @include sp {
+        font-size: get_sp(14);
+      }
+    }
+  }
+}
+
+.footer-content {
+  &__main {
+    display: flex;
+    gap: 60px;
+    margin-bottom: 30px;
+    @include clearfix;
+
+    @include pc {
+      gap: get_pc(60);
+      margin-bottom: get_pc(30);
+    }
+
+    @include sp {
+      flex-direction: column;
+      gap: get_sp(30);
+      margin-bottom: get_sp(30);
+    }
+  }
+
+  &__bottom {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid $color-border-light;
+
+    @include pc {
+      padding-top: get_pc(20);
+      border-top-width: get_pc(1);
+    }
+
+    @include sp {
+      padding-top: get_sp(20);
+      border-top-width: get_sp(1);
+    }
+  }
+}
+
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+
+  @include pc {
+    gap: get_pc(8);
+  }
+
+  @include sp {
+    gap: get_sp(8);
+  }
+
+  img {
+    width: 24px;
+    height: 24px;
+
+    @include pc {
+      width: get_pc(24);
+      height: get_pc(24);
+    }
+
+    @include sp {
+      width: get_sp(24);
+      height: get_sp(24);
+    }
+  }
+}
+
+.footer-nav {
+  display: flex;
+  gap: 60px;
+
+  @include pc {
+    gap: get_pc(60);
+  }
+
+  @include sp {
+    flex-direction: column;
+    gap: get_sp(30);
+  }
+
+  &__section {
+    flex: 1;
+  }
+
+  &__title {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: $color-txt;
+    animation: fadeInToTop 0.6s $ease-cubic;
+
+    @include pc {
+      font-size: get_pc(16);
+      margin-bottom: get_pc(15);
+    }
+
+    @include sp {
+      font-size: get_sp(14);
+    }
+  }
+
+  &__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+      margin-bottom: 8px;
+
+      @include pc {
+        margin-bottom: get_pc(8);
+      }
+
+      @include sp {
+        margin-bottom: get_sp(8);
+      }
+    }
+
+    a {
+      color: $color-text-gray;
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.3s ease;
+
+      @include pc {
+        font-size: get_pc(14);
+      }
+      @include sp {
+        font-size: get_sp(14);
+      }
+
+      &:hover {
+        color: $color-primary;
+      }
+    }
+  }
+}
+
+.footer-copyright {
+  margin: 0;
+  color: $color-text-gray;
+  font-size: 14px;
+
+  @include pc {
+    font-size: get_pc(14);
+  }
+
+  @include sp {
+    font-size: get_sp(14);
+  }
+}

@@ -10,6 +10,36 @@ $color-white: #fff;
 $color-txt: #333;
 $color-bg: #fff;
 
+// Text colors
+$color-text-gray: #666;
+$color-text-dark-gray: #555;
+$color-text-light-gray: #777;
+$color-text-placeholder: #999;
+
+// Border colors
+$color-border-light: #e5e5e5;
+$color-border-very-light: #eee;
+
+// Background colors
+$color-bg-light: #f8f9fa;
+$color-bg-very-light: #f0f0f0;
+$color-bg-blue-light: #f8f9ff;
+
+// Gradient colors
+$color-gradient-blue: #4facfe;
+$color-gradient-purple: #667eea;
+$color-gradient-purple-dark: #764ba2;
+
+// Status colors
+$color-success: #4caf50;
+$color-blue-dark: #5a6fd8;
+
+// Shadow colors
+$color-shadow-light: rgb(0, 0, 0, 5%);
+$color-shadow-medium: rgb(0, 0, 0, 10%);
+$color-shadow-dark: rgb(0, 0, 0, 20%);
+$color-shadow-very-dark: rgb(0, 0, 0, 30%);
+
 // Legacy colors (keep for backward compatibility)
 $clr-base: #fff;
 $clr-txt-white: #fff;

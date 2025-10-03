@@ -2,7 +2,6 @@ import React from 'react';
 import { Outlet, useMatches } from 'react-router-dom';
 import LayoutDefault from '@layouts/Layout-default/LayoutDefault';
 import SeoHead from '@components/common/SeoHead/SeoHead';
-import './layout.scss';
 
 type RouteHandle = {
   layout?: 'default';
@@ -34,11 +33,9 @@ const MainLayout: React.FC = () => {
   return (
     <>
       <SeoHead pageKey={pageName} breadcrumbs={breadcrumbs} />
-      <div id="l-document">
-        <ActiveLayout>
-          <Outlet />
-        </ActiveLayout>
-      </div>
+      <ActiveLayout>
+        <Outlet />
+      </ActiveLayout>
     </>
   );
 };

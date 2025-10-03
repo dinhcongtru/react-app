@@ -16,8 +16,8 @@ export const DEFAULT_SEO: SeoData = {
   author: 'React App Team',
   twitterCard: 'summary_large_image',
   canonical: BASE_URL,
-  noindex: true,
-  nofollow: true,
+  noindex: false,
+  nofollow: false,
 };
 
 // Page-specific SEO configurations

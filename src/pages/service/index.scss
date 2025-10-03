@@ -1,0 +1,326 @@
+// Services Page
+.page-services {
+  padding: 0;
+
+  .services-hero {
+    background: linear-gradient(135deg, $color-primary 0%, $color-gradient-blue 100%);
+    color: $color-white;
+    padding: 100px 0;
+    text-align: center;
+
+    @include pc {
+      padding: get_pc(100) 0;
+    }
+
+    @include sp {
+      padding: get_sp(60) 0;
+    }
+
+    .services-title {
+      font-size: 36px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      animation: fadeInBottom 1s $ease-cubic;
+
+      @include pc {
+        font-size: get_pc(48);
+        margin-bottom: get_pc(20);
+      }
+
+      @include sp {
+        font-size: get_sp(36);
+      }
+    }
+
+    .services-subtitle {
+      font-size: 18px;
+      opacity: 0.9;
+      max-width: 600px;
+      margin: 0 auto;
+
+      @include pc {
+        font-size: get_pc(20);
+        max-width: get_pc(600);
+      }
+
+      @include sp {
+        font-size: get_sp(18);
+      }
+    }
+  }
+
+  .services-grid-section {
+    padding: 80px 0;
+
+    @include pc {
+      padding: get_pc(80) 0;
+    }
+
+    @include sp {
+      padding: get_sp(60) 0;
+    }
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+
+    @include pc {
+      gap: get_pc(40);
+    }
+
+    @include sp {
+      grid-template-columns: 1fr;
+      gap: get_sp(20);
+    }
+  }
+
+  .service-card {
+    background: $color-white;
+    border-radius: 10px;
+    padding: 40px 30px;
+    text-align: center;
+    box-shadow: 0 4px 20px $color-shadow-medium;
+    transition: transform 0.3s ease;
+    animation: fadeInToTop 0.8s $ease-cubic;
+
+    @include pc {
+      border-radius: get_pc(10);
+      padding: get_pc(40) get_pc(30);
+      box-shadow: 0 get_pc(4) get_pc(20) $color-shadow-medium;
+    }
+
+    @include sp {
+      border-radius: get_sp(10);
+      padding: get_sp(40) get_sp(30);
+      box-shadow: 0 get_sp(4) get_sp(20) $color-shadow-medium;
+    }
+
+    &:hover {
+      transform: translateY(-5px);
+
+      @include pc {
+        transform: translateY(get_pc(-5));
+      }
+
+      @include sp {
+        transform: translateY(get_sp(-5));
+      }
+    }
+
+    .service-icon {
+      font-size: 48px;
+      margin-bottom: 20px;
+
+      @include pc {
+        font-size: get_pc(48);
+        margin-bottom: get_pc(20);
+      }
+
+      @include sp {
+        font-size: get_sp(48);
+        margin-bottom: get_sp(20);
+      }
+    }
+
+    .service-title {
+      font-size: 24px;
+      color: $color-primary;
+      margin-bottom: 15px;
+      font-weight: 600;
+
+      @include pc {
+        font-size: get_pc(24);
+        margin-bottom: get_pc(15);
+      }
+
+      @include sp {
+        font-size: get_sp(24);
+        margin-bottom: get_sp(15);
+      }
+    }
+
+    .service-description {
+      color: $color-text-gray;
+      line-height: 1.6;
+      margin-bottom: 25px;
+
+      @include pc {
+        margin-bottom: get_pc(25);
+      }
+
+      @include sp {
+        margin-bottom: get_sp(25);
+      }
+    }
+  }
+
+  .service-features {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 30px;
+
+    @include pc {
+      margin-bottom: get_pc(30);
+    }
+
+    @include sp {
+      margin-bottom: get_sp(30);
+    }
+
+    .service-feature {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 5px 0;
+      color: $color-text-dark-gray;
+
+      @include pc {
+        gap: get_pc(10);
+        padding: get_pc(5) 0;
+      }
+
+      @include sp {
+        gap: get_sp(10);
+        padding: get_sp(5) 0;
+      }
+
+      .feature-check {
+        color: $color-success;
+        font-weight: bold;
+      }
+    }
+  }
+
+  .service-cta {
+    background: $color-primary;
+    color: $color-white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 25px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s ease;
+
+    @include pc {
+      padding: get_pc(12) get_pc(30);
+      border-radius: get_pc(25);
+    }
+
+    @include sp {
+      padding: get_sp(12) get_sp(30);
+      border-radius: get_sp(25);
+    }
+
+    &:hover {
+      background: darken($color-primary, 10%);
+    }
+  }
+
+  .cta-section {
+    background: $color-bg-light;
+    padding: 80px 0;
+    text-align: center;
+
+    @include pc {
+      padding: get_pc(80) 0;
+    }
+
+    @include sp {
+      padding: get_sp(60) 0;
+    }
+  }
+
+  .cta-content h2 {
+    font-size: 36px;
+    color: $color-primary;
+    margin-bottom: 15px;
+
+    @include pc {
+      font-size: get_pc(36);
+      margin-bottom: get_pc(15);
+    }
+
+    @include sp {
+      font-size: get_sp(28);
+      margin-bottom: get_sp(15);
+    }
+  }
+
+  .cta-content p {
+    font-size: 18px;
+    color: $color-text-gray;
+    margin-bottom: 30px;
+
+    @include pc {
+      font-size: get_pc(18);
+      margin-bottom: get_pc(30);
+    }
+
+    @include sp {
+      font-size: get_sp(18);
+      margin-bottom: get_sp(30);
+    }
+  }
+
+  .cta-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+
+    @include pc {
+      gap: get_pc(20);
+    }
+
+    @include sp {
+      flex-direction: column;
+      align-items: center;
+      gap: get_sp(20);
+    }
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    padding: 15px 30px;
+    border-radius: 25px;
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid $color-primary;
+
+    @include pc {
+      padding: get_pc(15) get_pc(30);
+      border-radius: get_pc(25);
+      font-size: get_pc(16);
+      border-width: get_pc(2);
+    }
+
+    @include sp {
+      padding: get_sp(15) get_sp(30);
+      border-radius: get_sp(25);
+      font-size: get_sp(16);
+      border-width: get_sp(2);
+    }
+  }
+
+  .btn-primary {
+    background: $color-primary;
+    color: $color-white;
+
+    &:hover {
+      background: darken($color-primary, 10%);
+    }
+  }
+
+  .btn-secondary {
+    background: transparent;
+    color: $color-primary;
+
+    &:hover {
+      background: $color-primary;
+      color: $color-white;
+    }
+  }
+}
