@@ -1,16 +1,24 @@
-import axios from 'axios';
+import axios, { type AxiosResponse } from 'axios';
 
-const axiosClient = axios.create({
+/**
+ * Axios client cơ bản
+ * Authorization được xử lý bởi authUtils trong methods
+ */
+
+export const axiosConfig = {
   baseURL: import.meta.env.VITE_API_URL,
   headers: {
     'Content-Type': 'application/json',
-    Authorization: `Bearer ${import.meta.env.VITE_API_TOKEN}`,
   },
   timeout: 10000,
-});
+};
+const axiosClient = axios.create(axiosConfig);
 
+/**
+ * Response interceptor để xử lý lỗi
+ */
 axiosClient.interceptors.response.use(
-  response => response,
+  (response: AxiosResponse) => response,
   error => Promise.reject(error.response?.data || error.message)
 );
 

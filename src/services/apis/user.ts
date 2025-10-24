@@ -1,28 +1,80 @@
-import { get } from '@services/methods/get';
-import { post } from '@services/methods/post';
-import { put } from '@services/methods/put';
-import { del } from '@services/methods/delete';
+import { type AuthOptions, del, get, post, put } from '@services/methods';
 import type { User } from '@services/types/user';
 import type { ApiResponse } from '@services/types/response';
 
+/**
+ * User API với Authorization support
+ */
 export const userApi = {
-  getUsers: async (): Promise<ApiResponse<User[]>> => {
-    return await get<User[]>('/users');
+  /**
+   * Lấy danh sách users (cần Authorization)
+   * @param authOptions - Authorization options
+   * @param params - Query parameters
+   * @returns Promise với danh sách users
+   */
+  getUsers: async (params?: object, authOptions?: AuthOptions): Promise<ApiResponse<User[]>> => {
+    return await get<User[]>('/users', params, authOptions);
   },
 
-  getUserById: async (id: string): Promise<ApiResponse<User>> => {
-    return await get<User>(`/users/${id}`);
+  /**
+   * Lấy user theo ID (cần Authorization)
+   * @param id - User ID
+   * @param params - Query parameters
+   * @param authOptions - Authorization options
+   * @returns Promise với thông tin user
+   */
+  getUserById: async (
+    id: string,
+    params?: object,
+    authOptions?: AuthOptions
+  ): Promise<ApiResponse<User>> => {
+    return await get<User>(`/users/${id}`, params, authOptions);
   },
 
-  createUser: async (data: Omit<User, 'id'>): Promise<ApiResponse<User>> => {
-    return await post<User>('/users', data);
+  /**
+   * Tạo user mới (cần Authorization)
+   * @param data - User data
+   * @param params - Query parameters
+   * @param authOptions - Authorization options
+   * @returns Promise với user đã tạo
+   */
+  createUser: async (
+    data: Omit<User, 'id'>,
+    params?: object,
+    authOptions?: AuthOptions
+  ): Promise<ApiResponse<User>> => {
+    return await post<User>('/users', data, params, authOptions);
   },
 
-  updateUser: async (id: string, data: Omit<User, 'id'>): Promise<ApiResponse<User>> => {
-    return await put<User>(`/users/${id}`, data);
+  /**
+   * Cập nhật user (cần Authorization)
+   * @param id - User ID
+   * @param data - User data
+   * @param params - Query parameters
+   * @param authOptions - Authorization options
+   * @returns Promise với user đã cập nhật
+   */
+  updateUser: async (
+    id: string,
+    data: Omit<User, 'id'>,
+    params?: object,
+    authOptions?: AuthOptions
+  ): Promise<ApiResponse<User>> => {
+    return await put<User>(`/users/${id}`, data, params, authOptions);
   },
 
-  deleteUser: async (id: string): Promise<ApiResponse<User>> => {
-    return await del<User>(`/users/${id}`);
+  /**
+   * Xóa user (cần Authorization)
+   * @param id - User ID
+   * @param params - Query parameters
+   * @param authOptions - Authorization options
+   * @returns Promise với kết quả xóa
+   */
+  deleteUser: async (
+    id: string,
+    params?: object,
+    authOptions?: AuthOptions
+  ): Promise<ApiResponse<User>> => {
+    return await del<User>(`/users/${id}`, params, authOptions);
   },
 };

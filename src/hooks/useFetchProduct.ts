@@ -9,10 +9,17 @@ export const useFetchProduct = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const res = await productApi.getProducts();
+        const res = await productApi.getProducts(
+          { limit: 10, page: 1 },
+          {
+            token: '1234567890',
+            forceAuth: false,
+            skipAuth: true,
+          }
+        );
         setProducts(res as Product[]);
       } catch (error) {
-        console.log('Error fetching products:', error);
+        console.error('Error fetching products:', error);
       } finally {
         setLoading(false);
       }
@@ -34,7 +41,7 @@ export const useFetchProductById = (id: string) => {
         const res = await productApi.getProductById(id);
         setProduct(res as Product);
       } catch (error) {
-        console.log('Error fetching product:', error);
+        console.error('Error fetching product:', error);
       } finally {
         setLoading(false);
       }

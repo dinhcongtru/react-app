@@ -1,28 +1,83 @@
-import { get } from '@services/methods/get';
-import { post } from '@services/methods/post';
-import { del } from '@services/methods/delete';
-import { put } from '@services/methods/put';
+import { type AuthOptions, del, get, post, put } from '@services/methods';
 import type { Product } from '@services/types/product';
 import type { ApiResponse } from '@services/types/response';
 
+/**
+ * Product API với Authorization support
+ */
 export const productApi = {
-  getProducts: async (): Promise<ApiResponse<Product[]>> => {
-    return await get<Product[]>('/products');
+  /**
+   * Lấy danh sách sản phẩm (public)
+   * @param authOptions - Authorization options
+   * @param params - Query parameters
+   * @returns Promise với danh sách sản phẩm
+   */
+  getProducts: async (
+    params?: object,
+    authOptions?: AuthOptions
+  ): Promise<ApiResponse<Product[]>> => {
+    return await get<Product[]>('/products', params, authOptions);
   },
 
-  getProductById: async (id: string): Promise<ApiResponse<Product>> => {
-    return await get<Product>(`/products/${id}`);
+  /**
+   * Lấy sản phẩm theo ID (public)
+   * @param id - Product ID
+   * @param params - Query parameters
+   * @param authOptions - Authorization options
+   * @returns Promise với thông tin sản phẩm
+   */
+  getProductById: async (
+    id: string,
+    params?: object,
+    authOptions?: AuthOptions
+  ): Promise<ApiResponse<Product>> => {
+    return await get<Product>(`/products/${id}`, params, authOptions);
   },
 
-  createProduct: async (data: Omit<Product, 'id'>): Promise<ApiResponse<Product>> => {
-    return await post<Product>('/products', data);
+  /**
+   * Tạo sản phẩm mới (cần Authorization)
+   * @param data - Product data
+   * @param params - Query parameters
+   * @param authOptions - Authorization options
+   * @returns Promise với sản phẩm đã tạo
+   */
+  createProduct: async (
+    data: Omit<Product, 'id'>,
+    params?: object,
+    authOptions?: AuthOptions
+  ): Promise<ApiResponse<Product>> => {
+    return await post<Product>('/products', data, params, authOptions);
   },
 
-  updateProduct: async (id: string, data: Omit<Product, 'id'>): Promise<ApiResponse<Product>> => {
-    return await put<Product>(`/products/${id}`, data);
+  /**
+   * Cập nhật sản phẩm (cần Authorization)
+   * @param id - Product ID
+   * @param data - Product data
+   * @param params - Query parameters
+   * @param authOptions - Authorization options
+   * @returns Promise với sản phẩm đã cập nhật
+   */
+  updateProduct: async (
+    id: string,
+    data: Omit<Product, 'id'>,
+    params?: object,
+    authOptions?: AuthOptions
+  ): Promise<ApiResponse<Product>> => {
+    return await put<Product>(`/products/${id}`, data, params, authOptions);
   },
 
-  deleteProduct: async (id: string): Promise<ApiResponse<Product>> => {
-    return await del<Product>(`/products/${id}`);
+  /**
+   * Xóa sản phẩm (cần Authorization)
+   * @param id - Product ID
+   * @param params - Query parameters
+   * @param authOptions - Authorization options
+   * @returns Promise với kết quả xóa
+   */
+  deleteProduct: async (
+    id: string,
+    params?: object,
+    authOptions?: AuthOptions
+  ): Promise<ApiResponse<Product>> => {
+    return await del<Product>(`/products/${id}`, params, authOptions);
   },
 };

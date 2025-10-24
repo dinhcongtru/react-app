@@ -11,7 +11,7 @@ export const useFetchUser = () => {
         const res = await userApi.getUsers();
         setUsers(res as User[]);
       } catch (error) {
-        console.log('Error fetching users:', error);
+        console.error('Error fetching users:', error);
       } finally {
         setLoading(false);
       }
@@ -31,7 +31,7 @@ export const useFetchUserById = (id: string) => {
         const res = await userApi.getUserById(id);
         setUser(res as User);
       } catch (error) {
-        console.log('Error fetching user:', error);
+        console.error('Error fetching user:', error);
       } finally {
         setLoading(false);
       }

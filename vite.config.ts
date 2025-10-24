@@ -42,6 +42,7 @@ export default defineConfig({
         additionalData: `@use "@/assets/styles/index.scss" as *;`,
       },
     },
+    devSourcemap: false,
   },
   resolve: {
     alias: {
@@ -66,34 +67,76 @@ export default defineConfig({
     target: 'es2015',
     minify: 'esbuild',
     sourcemap: false,
+    cssCodeSplit: true,
+    cssMinify: true,
     rollupOptions: {
       output: {
+        // Asset files organization
         assetFileNames: assetInfo => {
-          if (/\.(png|jpe?g|svg|gif)$/.test(assetInfo.name ?? '')) {
-            return 'assets/images/[name]-[hash][extname]';
+          const ext = assetInfo.name?.split('.').pop()?.toLowerCase();
+          const hash = '[hash]';
+          const name = '[name]';
+
+          switch (ext) {
+            case 'css':
+              return `assets/css/${name}-${hash}[extname]`;
+            case 'png':
+            case 'jpg':
+            case 'jpeg':
+            case 'svg':
+            case 'gif':
+            case 'webp':
+              return `assets/images/${name}-${hash}[extname]`;
+            case 'woff':
+            case 'woff2':
+            case 'ttf':
+            case 'eot':
+              return `assets/fonts/${name}-${hash}[extname]`;
+            default:
+              return `assets/${name}-${hash}[extname]`;
           }
-          return 'assets/[name]-[hash][extname]';
         },
-        manualChunks(id) {
-          if (id.includes('node_modules')) {
-            const pkgName = getPackageName(id);
-            // Ensure React ecosystem stays together to avoid duplicate instances
-            if (
-              [
-                'react',
-                'react-dom',
-                'react-redux',
-                '@reduxjs/toolkit',
-                'react-helmet-async',
-                'use-sync-external-store',
-              ].includes(pkgName)
-            ) {
-              return 'react-core';
-            }
-            if (['react-router-dom', 'react-router'].includes(pkgName)) return 'router';
-            return 'vendors';
+
+        // JS files organization
+        chunkFileNames: 'assets/js/[name]-[hash].js',
+        entryFileNames: 'assets/js/[name]-[hash].js',
+
+        // Code splitting strategy
+        manualChunks: id => {
+          if (!id.includes('node_modules')) return undefined;
+
+          const pkgName = getPackageName(id);
+
+          // React ecosystem
+          if (
+            [
+              'react',
+              'react-dom',
+              'react-redux',
+              '@reduxjs/toolkit',
+              'react-helmet-async',
+              'use-sync-external-store',
+            ].includes(pkgName)
+          ) {
+            return 'react-core';
           }
-          return undefined;
+
+          // Router
+          if (['react-router-dom', 'react-router'].includes(pkgName)) {
+            return 'router';
+          }
+
+          // UI libraries
+          if (
+            ['@mui/material', '@mui/icons-material', '@emotion/react', '@emotion/styled'].includes(
+              pkgName
+            )
+          ) {
+            return 'ui-libs';
+          }
+
+          // Other vendors
+          return 'vendors';
         },
       },
     },
