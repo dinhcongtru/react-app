@@ -1,12 +1,13 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import InputText from '@components/common/Inputs/InputText/InputText';
 import TextArea from '@components/common/Inputs/TextArea/TextArea';
 import Image from '@components/common/Images/Image';
 import { images } from '@/utils/images';
 import Button from '@components/common/Buttons/Button';
-import { validEmail, validName, validTel } from '@utils/validateForm';
+import { getFieldError } from '@utils/getFieldError';
 import { useDebounce } from '@hooks/useDebounce';
 import './ContactForm.scss';
+import { sessionStoreFormContact } from '@/clients/sessionstore/SessionStoreFormContact';
 
 interface ContactFormProps {
   action: string;
@@ -39,11 +40,23 @@ const initialForm = {
 const ContactForm = ({ action }: ContactFormProps) => {
   const [form, setForm] = useState<ContactForm>(initialForm);
   const [errors, setErrors] = useState<ContactFormErrors>(initialForm);
+
+  // Load data from sessionStorage on component mount
+  useEffect(() => {
+    const savedFormData = sessionStoreFormContact.getItem();
+    if (savedFormData) {
+      try {
+        setForm(savedFormData);
+      } catch {
+        sessionStoreFormContact.removeItem();
+      }
+    }
+  }, []);
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const hasErrors = validateAllFields();
     if (hasErrors) return;
-    sessionStorage.setItem('contact-form', JSON.stringify(form));
+    sessionStoreFormContact.setItem(form);
   };
 
   const validateAllFields = () => {
@@ -65,60 +78,27 @@ const ContactForm = ({ action }: ContactFormProps) => {
     return hasErrors;
   };
 
-  const getFieldError = (name: string, value: string) => {
-    if (!value.trim()) {
-      return `${name} is required`;
-    }
-
-    switch (name) {
-      case 'lastName':
-      case 'firstName':
-        return !validName(value) ? `Invalid ${name}` : '';
-      case 'email':
-        return !validEmail(value) ? 'Invalid email format' : '';
-      case 'phone':
-        return !validTel(value) ? 'Invalid phone number' : '';
-      case 'message':
-        return value.trim().length < 10 ? 'Message must be at least 10 characters' : '';
-      default:
-        return '';
-    }
-  };
-
-  const validateField = useCallback((name: string, value: string) => {
+  const validateField = (name: string, value: string) => {
     const errorMessage = getFieldError(name, value);
     setErrors(prev => ({ ...prev, [name]: errorMessage }));
-  }, []);
+  };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setForm(prev => ({ ...prev, [name]: value }));
-
-    // Clear error when user starts typing
-    if (errors[name as keyof ContactFormErrors]) {
-      setErrors(prev => ({ ...prev, [name]: '' }));
-    }
+    debouncedValidate(name, value);
   };
 
   const handleBlur = (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     // Validate immediately on blur
-    validateField(name, value);
+    debouncedValidate(name, value);
   };
 
   // Debounced validation function
   const debouncedValidate = useDebounce((name: string, value: string) => {
     validateField(name, value);
   }, 300);
-
-  // Validate field when form data changes
-  useEffect(() => {
-    Object.entries(form).forEach(([name, value]) => {
-      if (value.trim()) {
-        debouncedValidate(name, value);
-      }
-    });
-  }, [form, debouncedValidate]);
 
   return (
     <form className="contact-form" method="post" action={action} onSubmit={handleSubmit}>
@@ -136,6 +116,7 @@ const ContactForm = ({ action }: ContactFormProps) => {
               <InputText
                 id="lastName"
                 name="lastName"
+                value={form.lastName}
                 placeholder="Last Name"
                 onChange={handleInputChange}
                 onBlur={handleBlur}
@@ -146,6 +127,7 @@ const ContactForm = ({ action }: ContactFormProps) => {
               <InputText
                 id="firstName"
                 name="firstName"
+                value={form.firstName}
                 placeholder="First Name"
                 onChange={handleInputChange}
                 onBlur={handleBlur}
@@ -156,6 +138,7 @@ const ContactForm = ({ action }: ContactFormProps) => {
               <InputText
                 id="email"
                 name="email"
+                value={form.email}
                 placeholder="Email"
                 onChange={handleInputChange}
                 onBlur={handleBlur}
@@ -166,6 +149,7 @@ const ContactForm = ({ action }: ContactFormProps) => {
               <InputText
                 id="phone"
                 name="phone"
+                value={form.phone}
                 placeholder="Phone Number"
                 onChange={handleInputChange}
                 onBlur={handleBlur}
@@ -176,6 +160,7 @@ const ContactForm = ({ action }: ContactFormProps) => {
               <TextArea
                 id="message"
                 name="message"
+                value={form.message}
                 placeholder="Message"
                 onChange={handleInputChange}
                 onBlur={handleBlur}

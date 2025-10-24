@@ -9,7 +9,7 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 
 const Button = ({ className, onClick, children, icon = false, ...props }: ButtonProps) => {
   return (
-    <button className={`btn${className ? className : ''}`} onClick={onClick} {...props}>
+    <button className={`btn btn-submit${className ? className : ''}`} onClick={onClick} {...props}>
       <span className="btn-text">{children}</span>
       {icon && <span className="btn-icon" />}
     </button>
